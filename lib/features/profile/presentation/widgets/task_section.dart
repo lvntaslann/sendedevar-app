@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/features/profile/presentation/widgets/task_item.dart';
+import 'package:sende_de_var/features/profile/presentation/widgets/task_item.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/utils/font_size.dart';
 

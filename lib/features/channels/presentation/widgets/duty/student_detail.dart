@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/features/channels/presentation/widgets/duty/completed_duty.dart';
-import 'package:sunnet_app/features/channels/presentation/widgets/name_and_date.dart';
-import 'package:sunnet_app/features/channels/presentation/widgets/user_profile_icon.dart';
+import 'package:sende_de_var/features/channels/presentation/widgets/duty/completed_duty.dart';
+import 'package:sende_de_var/features/channels/presentation/widgets/name_and_date.dart';
+import 'package:sende_de_var/features/channels/presentation/widgets/user_profile_icon.dart';
 import '../../../../../core/themes/app_colors.dart';
 import '../../../../../core/utils/date_formatter.dart';
 import '../../../data/model/duty_model.dart';

@@ -11,28 +11,22 @@ class DailyHadisCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final appColors = AppColors(isDarkMode: false);
 
-    return Container(
-      width: double.infinity,
-      height: 370.h,
-      padding: EdgeInsets.all(12.w),
-      decoration: const BoxDecoration(color: Colors.transparent),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 50.h,
-            child: Container(
-              decoration: BoxDecoration(
-                color: appColors.home.contentContainerBgColor,
-                border: Border.all(
-                  color: appColors.home.contentContainerStrokeColor,
-                  width: 2,
-                ),
-                borderRadius: BorderRadius.circular(15),
-              ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: appColors.home.contentContainerBgColor,
+          border: Border.all(
+            color: appColors.home.contentContainerStrokeColor,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
               padding: EdgeInsets.all(12.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,11 +39,11 @@ class DailyHadisCard extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.h),
                   Directionality(
                     textDirection: TextDirection.rtl,
                     child: Text(
-                      "“إِنَّمَا الأَعْمَالُ بِالنِّيَّةِ، وَإِنَّمَا لاِمْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ، فَهِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ، وَمَنْ كَانَتْ هِجْرَتُهُ لِدُنْيَا يُصِيبُهَا أَوِ امْرَأَةٍ يَتَزَوَّجُهَا، فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ.”",
+                      "“إِنَّمَا الأَعْمَالُ بِالنِّيَّةِ، وَإِنَّمَا لاِمْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ، فَهِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ، وَمَنْ كَانَتْ هِجْرَتُهُ لِدُنْيَا يُصِيبُهَا أَوِ امْرَأَةٍ يَتَزَوَّجُهَا، فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ.”",
                       style: TextStyle(
                         color: appColors.home.textColor,
                         fontSize: AppFontSizes.s16,
@@ -70,53 +64,61 @@ class DailyHadisCard extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-
-          Positioned(
-            bottom: 10.h,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 50.h,
+            Container(
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: appColors.home.contentDetailBgColor,
-                border: Border.all(
-                  color: appColors.home.contentContainerStrokeColor,
-                  width: 2,
+                border: Border(
+                  top: BorderSide(
+                    color: appColors.home.contentContainerStrokeColor,
+                    width: 2,
+                  ),
                 ),
                 borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(13),
+                  bottomRight: Radius.circular(13),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    SizedBox(width: 5.w),
-                    Text(
+              padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.h),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
                       "Buhârî, Bedü vahy, 1",
                       style: TextStyle(
                         color: appColors.home.contentTurkishTextColor,
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(width: 150.w),
-                    Icon(
+                  ),
+                  SizedBox(width: 10.w),
+                  GestureDetector(
+                    onTap: () => _showComingSoon(context),
+                    child: Icon(
                       Icons.favorite,
                       color: appColors.home.contentIconColor,
                     ),
-                    SizedBox(width: 10.w),
-                    Icon(
+                  ),
+                  SizedBox(width: 10.w),
+                  GestureDetector(
+                    onTap: () => _showComingSoon(context),
+                    child: Icon(
                       Icons.share,
                       color: appColors.home.contentIconColor,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+    );
+  }
+
+  void _showComingSoon(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Bu özellik yakında eklenecek")),
     );
   }
 }

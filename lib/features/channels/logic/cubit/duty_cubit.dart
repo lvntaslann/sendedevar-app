@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sunnet_app/features/channels/data/model/duty_model.dart';
+import 'package:sende_de_var/features/channels/data/model/duty_model.dart';
 
 import '../../data/services/duty_services.dart';
 import 'duty_state.dart';

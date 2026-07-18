@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sunnet_app/features/home/presentation/widgets/daily_hadis_card.dart';
+import 'package:sende_de_var/features/home/presentation/widgets/daily_hadis_card.dart';
 import '../widgets/mini_container_row.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

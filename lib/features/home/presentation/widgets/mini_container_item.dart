@@ -32,7 +32,12 @@ class MiniContainerItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(item.iconPath),
+            Image.asset(
+              item.iconPath,
+              width: 42.w,
+              height: 42.h,
+              filterQuality: FilterQuality.high,
+            ),
             Text(
               item.title,
               style: TextStyle(

@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/features/channels/data/model/members_model.dart';
-import 'package:sunnet_app/features/channels/logic/cubit/channel_state.dart';
-import 'package:sunnet_app/features/channels/presentation/widgets/showdialog/add_member_dialog.dart';
+import 'package:sende_de_var/features/channels/data/model/members_model.dart';
+import 'package:sende_de_var/features/channels/logic/cubit/channel_state.dart';
+import 'package:sende_de_var/features/channels/presentation/widgets/showdialog/add_member_dialog.dart';
 import '../../../../core/routes/app_routes.dart'; // Yönlendirme için eklendi
 import '../../../auth/logic/cubit/user_cubit.dart'; // UserCubit kontrolü için eklendi
 import 'duty_page.dart';

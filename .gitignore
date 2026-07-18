@@ -50,6 +50,7 @@ firebase.json
 lib/firebase_options.dart
 android/app/google-services.json
 
-# API Keys - Hassas bilgiler içerir, asla commit'e girmesin
 **/local.properties
 key.properties
+
+firestore.rules

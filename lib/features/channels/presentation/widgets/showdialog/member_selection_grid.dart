@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/core/utils/name_utils.dart';
+import 'package:sende_de_var/core/utils/name_utils.dart';
 import '../../../../channels/data/model/members_model.dart';
 
 class MemberSelectionGrid extends StatelessWidget {

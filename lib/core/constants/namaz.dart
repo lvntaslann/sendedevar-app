@@ -1,5 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/features/namaz/data/model/namaz_model.dart';
+import 'package:sende_de_var/features/namaz/data/model/namaz_model.dart';
 
 final List<NamazModel> namazContent = [
   NamazModel(

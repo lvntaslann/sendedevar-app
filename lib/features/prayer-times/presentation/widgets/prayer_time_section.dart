@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/utils/font_size.dart';
+import '../../../../core/widgets/shimmer_box.dart';
 import '../../data/model/prayer_time_model.dart';
 import '../../logic/cubit/prayer_time_cubit.dart';
 import '../../logic/cubit/prayer_time_state.dart';
@@ -16,7 +17,14 @@ class PrayerTimesSection extends StatelessWidget {
     return BlocBuilder<PrayerTimeCubit, PrayerTimeState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const CircularProgressIndicator();
+          return Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: List.generate(
+              6,
+              (_) => ShimmerBox(width: 145.w, height: 82.h, borderRadius: 20),
+            ),
+          );
         } else if (state.data != null) {
           PrayerDay today = state.data!.days.first;
           return Wrap(

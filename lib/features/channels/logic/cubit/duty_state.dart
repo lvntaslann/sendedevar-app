@@ -1,4 +1,4 @@
-import 'package:sunnet_app/features/channels/data/model/duty_model.dart';
+import 'package:sende_de_var/features/channels/data/model/duty_model.dart';
 
 class DutyState {
   final List<DutyModel> duty;

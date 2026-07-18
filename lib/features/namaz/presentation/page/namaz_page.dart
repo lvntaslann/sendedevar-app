@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/core/constants/namaz.dart';
-import 'package:sunnet_app/core/themes/app_colors.dart';
+import 'package:sende_de_var/core/constants/namaz.dart';
+import 'package:sende_de_var/core/themes/app_colors.dart';
 import '../../../../core/widgets/custom_app_bar.dart';
 import '../../../../core/widgets/custom_content_widget.dart';
 

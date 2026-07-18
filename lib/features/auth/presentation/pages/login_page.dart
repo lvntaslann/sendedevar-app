@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sunnet_app/features/auth/presentation/widgets/dont_have_account.dart';
+import 'package:sende_de_var/features/auth/presentation/widgets/dont_have_account.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../widgets/auth_button.dart';
+import '../widgets/auth_header.dart';
 import '../widgets/auth_textfield.dart';
 import '../widgets/title_text.dart';
 import '../../../auth/logic/cubit/user_cubit.dart';
@@ -103,10 +105,22 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset("assets/auth/authpage-icon.png", width: 150),
-                    SizedBox(height: 20),
+                    Container(
+                      width: 110.w,
+                      height: 110.w,
+                      padding: EdgeInsets.all(14.w),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.asset(
+                        "assets/logo/sunnet-app-logo.png",
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    SizedBox(height: 24.h),
                     CircularProgressIndicator(
-                      color: Colors.blue[800],
+                      color: const Color(0xFF22C55E),
                     ), // İsteğe bağlı yükleniyor ikonu
                   ],
                 ),
@@ -115,9 +129,11 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 100),
-                    Center(child: Image.asset("assets/auth/authpage-icon.png")),
-                    SizedBox(height: 20),
+                    AuthHeader(
+                      appColors: appColors,
+                      subtitle: "Hesabına giriş yap",
+                    ),
+                    SizedBox(height: 30.h),
 
                     TitleText(appColors: appColors, titleText: "E-mail"),
                     SizedBox(height: 5),
@@ -126,6 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: "Ex: example@gmail.com",
                       controller: emailController,
                       isPassword: false,
+                      prefixIcon: Icons.email_outlined,
                     ),
 
                     SizedBox(height: 20),
@@ -137,11 +154,12 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: "Ex: !dkKOWsŞ548.Ç54",
                       controller: passwordController,
                       isPassword: true,
+                      prefixIcon: Icons.lock_outline,
                     ),
 
                     SizedBox(height: 10),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0),
+                      padding: EdgeInsets.symmetric(horizontal: 28.0),
                       child: Row(
                         children: [
                           SizedBox(
@@ -154,7 +172,11 @@ class _LoginPageState extends State<LoginPage> {
                                   isRememberMe = value ?? false;
                                 });
                               },
-                              activeColor: Colors.blue[800],
+                              activeColor: const Color(0xFF22C55E),
+                              checkColor: Colors.white,
+                              side: BorderSide(
+                                color: appColors.authPage.textColor.withOpacity(0.5),
+                              ),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(4),
                               ),
@@ -164,7 +186,7 @@ class _LoginPageState extends State<LoginPage> {
                           Text(
                             "Beni Hatırla",
                             style: TextStyle(
-                              color: Colors.grey[700],
+                              color: appColors.authPage.textColor.withOpacity(0.8),
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                             ),
@@ -216,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           "Üye Olmadan Devam Et",
                           style: TextStyle(
-                            color: Colors.grey[700],
+                            color: appColors.authPage.textColor.withOpacity(0.7),
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,

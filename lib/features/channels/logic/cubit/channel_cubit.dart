@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sunnet_app/features/channels/logic/cubit/channel_state.dart';
+import 'package:sende_de_var/features/channels/logic/cubit/channel_state.dart';
 import '../../data/model/channel_model.dart';
 import '../../data/services/channel_services.dart';
 

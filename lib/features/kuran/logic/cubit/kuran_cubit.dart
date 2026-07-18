@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sunnet_app/features/kuran/data/services/kuran_services.dart';
-import 'package:sunnet_app/features/kuran/logic/cubit/kuran_state.dart';
+import 'package:sende_de_var/features/kuran/data/services/kuran_services.dart';
+import 'package:sende_de_var/features/kuran/logic/cubit/kuran_state.dart';
 
 import '../../data/model/kuran_model.dart';
 

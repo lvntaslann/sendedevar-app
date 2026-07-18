@@ -16,33 +16,41 @@ class AuthButton extends StatelessWidget {
   final Function()? onTap;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Center(
-        child: Container(
-          width: 124.w,
-          height: 60.h,
-          decoration: BoxDecoration(
-            color: appColors.authPage.containerColor,
-            borderRadius: BorderRadius.circular(10.r),
-            boxShadow: [
-              BoxShadow(
-                color: appColors.authPage.containerShadowColor.withOpacity(
-                  0.2,
-                ),
-                spreadRadius: 0,
-                blurRadius: 3,
-                offset: const Offset(0, 3),
+    return Center(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16.r),
+          child: Container(
+            width: 320.w,
+            height: 58.h,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [appColors.authPage.containerColor, const Color(0xFF22C55E)],
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
               ),
-            ],
-          ),
-          child: Center(
-            child: Text(
-              buttonText,
-              style: TextStyle(
-                color: appColors.authPage.textColor,
-                fontSize: AppFontSizes.s16,
-                fontWeight: FontWeight.w400,
+              borderRadius: BorderRadius.circular(16.r),
+              boxShadow: [
+                BoxShadow(
+                  color: appColors.authPage.containerShadowColor.withOpacity(
+                    0.25,
+                  ),
+                  spreadRadius: 0,
+                  blurRadius: 10,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Center(
+              child: Text(
+                buttonText,
+                style: TextStyle(
+                  color: appColors.authPage.textColor,
+                  fontSize: AppFontSizes.s16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),

@@ -15,7 +15,6 @@ class UserModel {
     required this.createdAt,
   });
 
-
   factory UserModel.fromMap(Map<String, dynamic> data, String uid) {
     return UserModel(
       uid: uid,

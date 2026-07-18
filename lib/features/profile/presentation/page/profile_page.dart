@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/core/routes/app_routes.dart'; // Yönlendirme için eklendi
-import 'package:sunnet_app/core/themes/app_colors.dart';
+import 'package:sende_de_var/core/routes/app_routes.dart'; // Yönlendirme için eklendi
+import 'package:sende_de_var/core/themes/app_colors.dart';
 import '../../../auth/logic/cubit/user_cubit.dart';
 import '../../../user_duties/logic/cubit/user_duty_cubit.dart';
 import '../../../user_duties/presentation/widgets/user_duties_section.dart';
 import '../widgets/daily_goal_section.dart';
 import '../widgets/profile_header.dart';
+import '../widgets/profile_settings_section.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -51,7 +52,9 @@ class _ProfilePageState extends State<ProfilePage> {
           DailyGoalSection(appColors: appColors, progress: 0.5),
           SizedBox(height: 20.h),
           UserDutiesSection(appColors: appColors),
-          SizedBox(height: 20.h),
+          SizedBox(height: 28.h),
+          ProfileSettingsSection(appColors: appColors, user: user, isAdmin: authState.isAdmin),
+          SizedBox(height: 30.h),
         ],
       ),
     );
@@ -60,52 +63,87 @@ class _ProfilePageState extends State<ProfilePage> {
   // GİRİŞ YAPMAMIŞ KULLANICI İÇİN GÖSTERİLECEK EKRAN
   Widget _buildGuestView(BuildContext context, AppColors appColors) {
     return Center(
-      child: Padding(
-        padding: EdgeInsets.only(top: 150.h, left: 20.w, right: 20.w),
+      child: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.account_circle_outlined,
-              size: 90.sp,
-              color: Colors.white54,
+            SizedBox(height: 60.h),
+            Container(
+              width: 110.w,
+              height: 110.w,
+              padding: EdgeInsets.all(14.w),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF22C55E).withOpacity(0.25),
+                    blurRadius: 20,
+                    spreadRadius: 2,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: Image.asset(
+                "assets/logo/sunnet-app-logo.png",
+                fit: BoxFit.contain,
+              ),
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 28.h),
             Text(
-              "Profilinizi görüntülemek ve\ngörevlerinizi takip etmek için\ngiriş yapmalısınız.",
+              "Profiline Hoş Geldin",
+              style: TextStyle(
+                color: appColors.profilePage.textColor,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            SizedBox(height: 10.h),
+            Text(
+              "Profilini görüntülemek, günlük hedeflerini ve\ngörevlerini takip etmek için giriş yap.",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
+                color: appColors.profilePage.textColor.withOpacity(0.7),
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                height: 1.4,
               ),
             ),
-            SizedBox(height: 30.h),
-            SizedBox(
-              width: double.infinity,
-              height: 50.h,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(
-                    0xFF287D3C,
-                  ), // Temandaki yeşil butona uygun
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.r),
+            SizedBox(height: 32.h),
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, Routes.login),
+              child: Container(
+                width: double.infinity,
+                height: 56.h,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF58A47A), Color(0xFF22C55E)],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
                   ),
+                  borderRadius: BorderRadius.circular(16.r),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF22C55E).withOpacity(0.25),
+                      blurRadius: 10,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
                 ),
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.login);
-                },
-                child: Text(
-                  "Giriş Yap / Üye Ol",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
+                child: Center(
+                  child: Text(
+                    "Giriş Yap / Üye Ol",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
             ),
+            SizedBox(height: 40.h),
           ],
         ),
       ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sunnet_app/core/constants/mini_container_detail.dart';
-import 'package:sunnet_app/features/home/presentation/widgets/mini_container_item.dart';
+import 'package:sende_de_var/core/constants/mini_container_detail.dart';
+import 'package:sende_de_var/features/home/presentation/widgets/mini_container_item.dart';
 import '../../../../core/themes/app_colors.dart';
 
 

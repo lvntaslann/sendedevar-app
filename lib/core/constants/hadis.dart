@@ -1,4 +1,4 @@
-import 'package:sunnet_app/features/hadis/data/hadis_model.dart';
+import 'package:sende_de_var/features/hadis/data/hadis_model.dart';
 
 final List<HadisModel> hadisModelData = [
   HadisModel(

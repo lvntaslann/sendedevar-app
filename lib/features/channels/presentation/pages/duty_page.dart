@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/core/widgets/custom_app_bar.dart';
-import 'package:sunnet_app/features/channels/logic/cubit/duty_cubit.dart';
-import 'package:sunnet_app/features/channels/logic/cubit/channel_cubit.dart';
-import 'package:sunnet_app/features/channels/presentation/widgets/button/add_duty_floating_button.dart';
+import 'package:sende_de_var/core/widgets/custom_app_bar.dart';
+import 'package:sende_de_var/features/channels/logic/cubit/duty_cubit.dart';
+import 'package:sende_de_var/features/channels/logic/cubit/channel_cubit.dart';
+import 'package:sende_de_var/features/channels/presentation/widgets/button/add_duty_floating_button.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../../data/model/channel_model.dart';
 import '../../data/model/members_model.dart';

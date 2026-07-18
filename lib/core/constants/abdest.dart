@@ -1,5 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/features/abdest/data/model/abdest_model.dart';
+import 'package:sende_de_var/features/abdest/data/model/abdest_model.dart';
 
 final List<AbdestModel> abdestContent = [
   AbdestModel(

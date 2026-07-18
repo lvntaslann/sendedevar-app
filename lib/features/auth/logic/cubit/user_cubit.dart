@@ -27,10 +27,12 @@ class UserCubit extends Cubit<UserState> {
       if (user != null) {
         final userData = await userServices.fetchUserData();
         if (userData != null) {
+          final isAdmin = await userServices.checkIsAdmin(user.uid);
           emit(state.copyWith(
             user: UserModel.fromMap(userData, user.uid),
             isLoading: false,
             isSignIn: true,
+            isAdmin: isAdmin,
           ));
         }
       } else {
@@ -53,10 +55,12 @@ class UserCubit extends Cubit<UserState> {
       if (user != null) {
         final userData = await userServices.fetchUserData();
         if (userData != null) {
+          final isAdmin = await userServices.checkIsAdmin(user.uid);
           emit(state.copyWith(
             user: UserModel.fromMap(userData, user.uid),
             isLoading: false,
             isAuthenticated: true,
+            isAdmin: isAdmin,
           ));
         }
       } else {
@@ -75,10 +79,12 @@ class UserCubit extends Cubit<UserState> {
       emit(state.copyWith(isLoading: true));
       final userData = await userServices.fetchUserData();
       if (userData != null && userServices.user != null) {
+        final isAdmin = await userServices.checkIsAdmin(userServices.user!.uid);
         emit(state.copyWith(
           user: UserModel.fromMap(userData, userServices.user!.uid),
           isAuthenticated: true,
           isLoading: false,
+          isAdmin: isAdmin,
         ));
       } else {
         emit(state.copyWith(isLoading: false));

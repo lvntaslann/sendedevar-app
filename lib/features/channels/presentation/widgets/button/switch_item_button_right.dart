@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/core/utils/font_size.dart';
+import 'package:sende_de_var/core/utils/font_size.dart';
 import '../../../../../core/themes/app_colors.dart';
 
 class SwitchItemButtonRight extends StatelessWidget {

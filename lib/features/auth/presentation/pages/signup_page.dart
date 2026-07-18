@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/themes/app_colors.dart';
 import '../widgets/auth_button.dart';
+import '../widgets/auth_header.dart';
 import '../widgets/auth_textfield.dart';
 import '../widgets/title_text.dart';
 import '../../../auth/logic/cubit/user_cubit.dart';
@@ -37,41 +39,48 @@ class SignupPage extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: appColors.authPage.pageBgColor,
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 100),
-              Center(child: Image.asset("assets/auth/authpage-icon.png")),
-              SizedBox(height: 20),
-              TitleText(appColors: appColors, titleText: "Ad-Soyad"),
-              SizedBox(height: 5),
-              AuthTextfield(
-                appColors: appColors,
-                hintText: "Ex: Levent Aslan",
-                controller: nameController,
-                isPassword: false,
-              ),
-              SizedBox(height: 20),
-              TitleText(appColors: appColors, titleText: "E-mail"),
-              SizedBox(height: 5),
-              AuthTextfield(
-                appColors: appColors,
-                hintText: "Ex: example@gmail.com",
-                controller: emailController,
-                isPassword: false,
-              ),
-              SizedBox(height: 20),
-              TitleText(appColors: appColors, titleText: "Şifre"),
-              SizedBox(height: 5),
-              AuthTextfield(
-                appColors: appColors,
-                hintText: "Ex: !dkKOWsŞ548.Ç54",
-                controller: passwordController,
-                isPassword: true,
-              ),
-              SizedBox(height: 70),
-              AuthButton(
+        body: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AuthHeader(
+                    appColors: appColors,
+                    subtitle: "Yeni bir hesap oluştur",
+                  ),
+                  SizedBox(height: 30.h),
+                  TitleText(appColors: appColors, titleText: "Ad-Soyad"),
+                  SizedBox(height: 5),
+                  AuthTextfield(
+                    appColors: appColors,
+                    hintText: "Ex: Levent Aslan",
+                    controller: nameController,
+                    isPassword: false,
+                    prefixIcon: Icons.person_outline,
+                  ),
+                  SizedBox(height: 20),
+                  TitleText(appColors: appColors, titleText: "E-mail"),
+                  SizedBox(height: 5),
+                  AuthTextfield(
+                    appColors: appColors,
+                    hintText: "Ex: example@gmail.com",
+                    controller: emailController,
+                    isPassword: false,
+                    prefixIcon: Icons.email_outlined,
+                  ),
+                  SizedBox(height: 20),
+                  TitleText(appColors: appColors, titleText: "Şifre"),
+                  SizedBox(height: 5),
+                  AuthTextfield(
+                    appColors: appColors,
+                    hintText: "Ex: !dkKOWsŞ548.Ç54",
+                    controller: passwordController,
+                    isPassword: true,
+                    prefixIcon: Icons.lock_outline,
+                  ),
+                  SizedBox(height: 40),
+                  AuthButton(
                 appColors: appColors,
                 buttonText: "Kayıt ol",
                 onTap: () {
@@ -103,9 +112,26 @@ class SignupPage extends StatelessWidget {
                     password: password,
                   );
                 },
+                  ),
+                  SizedBox(height: 30.h),
+                ],
               ),
-            ],
-          ),
+            ),
+            Positioned(
+              top: 16.h,
+              left: 12.w,
+              child: SafeArea(
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(
+                    Icons.arrow_back_ios_new,
+                    color: appColors.authPage.textColor,
+                    size: 20.r,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

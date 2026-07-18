@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sunnet_app/features/channels/data/model/members_model.dart';
+import 'package:sende_de_var/features/channels/data/model/members_model.dart';
 
 class ChannelModel {
   final String id;

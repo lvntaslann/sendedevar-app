@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:sunnet_app/core/constants/kuran_ayet_data.dart';
+import 'package:sende_de_var/core/constants/kuran_ayet_data.dart';
 import 'dart:convert';
-import 'package:sunnet_app/features/kuran/data/model/kuran_model.dart';
+import 'package:sende_de_var/features/kuran/data/model/kuran_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class KuranServices {

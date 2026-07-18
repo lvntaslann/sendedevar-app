@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart'; // GERÇEK KONUM İÇİN EKLENDİ
-import 'package:sunnet_app/core/themes/app_colors.dart';
-import 'package:sunnet_app/core/widgets/custom_app_bar.dart';
+import 'package:sende_de_var/core/themes/app_colors.dart';
+import 'package:sende_de_var/core/widgets/custom_app_bar.dart';
 
+import '../../../../core/utils/fetch_time_util.dart';
 import '../../logic/cubit/prayer_time_cubit.dart';
 import '../widgets/prayer_clock_section.dart';
 import '../widgets/prayer_location_section.dart';
@@ -23,9 +24,13 @@ class _PrayerPageState extends State<PrayerPage> {
   void initState() {
     super.initState();
 
-    // Sayfa açılır açılmaz gerçek konumu almak için fonksiyonu çağırıyoruz
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _fetchDataWithRealLocation();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await context.read<PrayerTimeCubit>().loadFromCache();
+
+      final shouldFetch = await FetchTimeUtil.shouldFetchData();
+      if (shouldFetch && mounted) {
+        _fetchDataWithRealLocation();
+      }
     });
   }
 

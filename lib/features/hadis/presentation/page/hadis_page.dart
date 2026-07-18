@@ -1,31 +1,109 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:sunnet_app/core/constants/hadis.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/themes/app_colors.dart';
+import '../../../../core/utils/font_size.dart';
 import '../widgets/hadis_slide_item.dart';
 
 class HadisPage extends StatelessWidget {
   const HadisPage({Key? key}) : super(key: key);
 
- Widget build(BuildContext context) {
-    List<Widget> slides = List.generate(
-      hadisModelData.length,
-      (index) => HadisSlideItem(index: index),
-    );
+  @override
+  Widget build(BuildContext context) {
+    final appColors = AppColors(isDarkMode: false);
 
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      child: CarouselSlider(
-        items: slides,
-        options: CarouselOptions(
-          viewportFraction: 1.0,
-          scrollDirection: Axis.vertical,
-          enlargeCenterPage: false,
-          enableInfiniteScroll: true,
-          autoPlay: false,
-          padEnds: false,
-          height: double.infinity,
-        ),
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
+      child: Column(
+        children: [
+          Icon(
+            Icons.auto_stories_outlined,
+            color: appColors.hadisPage.titleTextColor,
+            size: 56.sp,
+          ),
+          SizedBox(height: 16.h),
+          Text(
+            "Hadisler Yakında Burada",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: appColors.hadisPage.hadisTextColor,
+              fontSize: AppFontSizes.s20,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          SizedBox(height: 8.h),
+          Text(
+            "Bu bölümü senin için hazırlıyoruz. Çok yakında günlük hadisleri\nburadan okuyabileceksin.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: appColors.hadisPage.turkishTextColor,
+              fontSize: AppFontSizes.s14,
+              fontWeight: FontWeight.w400,
+              height: 1.4,
+            ),
+          ),
+          SizedBox(height: 28.h),
+          Text(
+            "Önizleme",
+            style: TextStyle(
+              color: appColors.hadisPage.titleTextColor,
+              fontSize: AppFontSizes.s14,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.5,
+            ),
+          ),
+          SizedBox(height: 12.h),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: SizedBox(
+              height: 420.h,
+              width: double.infinity,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  const IgnorePointer(child: HadisSlideItem(index: 0)),
+                  BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                    child: Container(
+                      color: appColors.hadisPage.pageBgColor.withOpacity(0.35),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
+                      decoration: BoxDecoration(
+                        color: appColors.hadisPage.contentContainerBgColor,
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          color: appColors.hadisPage.contentContainerStrokeColor,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.lock_clock_outlined,
+                            color: appColors.hadisPage.titleTextColor,
+                            size: 18.sp,
+                          ),
+                          SizedBox(width: 8.w),
+                          Text(
+                            "Yakında",
+                            style: TextStyle(
+                              color: appColors.hadisPage.hadisTextColor,
+                              fontSize: AppFontSizes.s14,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

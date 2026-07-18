@@ -1,4 +1,4 @@
-import 'package:sunnet_app/features/channels/data/model/members_model.dart';
+import 'package:sende_de_var/features/channels/data/model/members_model.dart';
 import '../../data/model/channel_model.dart';
 
 class ChannelState {

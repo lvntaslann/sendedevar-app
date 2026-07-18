@@ -1,5 +1,5 @@
 
-import 'package:sunnet_app/features/kuran/data/model/kuran_model.dart';
+import 'package:sende_de_var/features/kuran/data/model/kuran_model.dart';
 
 class KuranState {
   final List<KuranModel> kuranData;

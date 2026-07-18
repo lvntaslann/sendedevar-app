@@ -71,6 +71,7 @@ class PrayerTimeCubit extends Cubit<PrayerTimeState> {
     /// 4️⃣ Cache kaydet (Eğer namaz vakti geldiyse)
     if (prayerResult != null) {
       await FetchTimeUtil.savePrayerTimes(jsonEncode(prayerResult.toJson()));
+      await FetchTimeUtil.updateFetchTime();
     }
   }
 

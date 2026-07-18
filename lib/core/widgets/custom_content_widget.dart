@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sunnet_app/core/themes/app_colors.dart';
-import 'package:sunnet_app/core/utils/font_size.dart';
+import 'package:sende_de_var/core/themes/app_colors.dart';
+import 'package:sende_de_var/core/utils/font_size.dart';
 
 class CustomContentWidget extends StatelessWidget {
   final AppColors appColors;
@@ -23,7 +23,6 @@ class CustomContentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 362.w,
-      height: 320.h,
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -35,6 +34,7 @@ class CustomContentWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

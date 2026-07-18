@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/themes/app_colors.dart';
 import '../../../../core/utils/font_size.dart';
+import '../../../../core/widgets/shimmer_box.dart';
 import '../../logic/cubit/prayer_time_cubit.dart';
 import '../../logic/cubit/prayer_time_state.dart';
 import '../../data/model/prayer_time_model.dart';
@@ -23,7 +24,14 @@ class PrayerLocationSection extends StatelessWidget {
           children: [
             // SOL TARAF
             if (state.isLoading)
-              const CircularProgressIndicator()
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ShimmerBox(width: 120.w, height: 20.h, borderRadius: 6),
+                  SizedBox(height: 8.h),
+                  ShimmerBox(width: 90.w, height: 14.h, borderRadius: 6),
+                ],
+              )
             else if (state.data != null)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

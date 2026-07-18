@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Place {
   final String country;
   final String name;
@@ -89,6 +87,35 @@ class PrayerTimesResponse {
     }
 
     return {'place': place.toJson(), 'times': timesMap};
+  }
+
+  factory PrayerTimesResponse.fromAladhan({
+    required Map<String, dynamic> data,
+    required String placeName,
+    required double lat,
+    required double lng,
+    required DateTime date,
+  }) {
+    final timings = data['timings'] as Map<String, dynamic>? ?? {};
+
+    String pick(String key) {
+      final value = timings[key]?.toString() ?? "--:--";
+      return value.split(" ").first; // "(+03)" gibi ekleri ayıkla
+    }
+
+    final times = [
+      pick('Imsak'),
+      pick('Sunrise'),
+      pick('Dhuhr'),
+      pick('Asr'),
+      pick('Maghrib'),
+      pick('Isha'),
+    ];
+
+    return PrayerTimesResponse(
+      place: Place(country: "", name: placeName, stateName: "", lat: lat, lng: lng),
+      days: [PrayerDay(date: date, times: times)],
+    );
   }
 }
 

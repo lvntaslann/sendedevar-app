@@ -5,6 +5,7 @@ class UserState {
   final bool isLoading;
   final bool isSignIn;
   final bool isAuthenticated;
+  final bool isAdmin;
   final String? error;
 
   const UserState({
@@ -12,6 +13,7 @@ class UserState {
     this.isLoading = false,
     this.isAuthenticated = false,
     this.isSignIn = false,
+    this.isAdmin = false,
     this.error,
   });
 
@@ -20,6 +22,7 @@ class UserState {
     bool? isLoading,
     bool? isAuthenticated,
     bool? isSignIn,
+    bool? isAdmin,
     String? error,
   }) {
     return UserState(
@@ -27,6 +30,7 @@ class UserState {
       isLoading: isLoading ?? this.isLoading,
       isAuthenticated: isAuthenticated ?? this.isAuthenticated,
       isSignIn: isSignIn ?? this.isSignIn,
+      isAdmin: isAdmin ?? this.isAdmin,
       error: error,
     );
   }

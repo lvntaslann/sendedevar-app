@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/utils/device_session_info.dart';
 
 class UserServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -28,6 +29,7 @@ class UserServices {
           'email': email,
           'createdAt': FieldValue.serverTimestamp(),
         });
+        await _recordSession(user.uid);
         return user;
       }
     } on FirebaseAuthException catch (e) {
@@ -44,10 +46,26 @@ class UserServices {
         email: email,
         password: password,
       );
-      return userCredential.user;
+      final user = userCredential.user;
+      if (user != null) {
+        await _recordSession(user.uid);
+      }
+      return user;
     } catch (e) {
       debugPrint(e.toString());
       return null;
+    }
+  }
+
+  Future<void> _recordSession(String uid) async {
+    try {
+      final sessionInfo = await DeviceSessionInfo.collect();
+      await _firestore.collection('users').doc(uid).set({
+        ...sessionInfo,
+        'lastLoginAt': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
+    } catch (e) {
+      debugPrint("Oturum bilgisi kaydedilemedi: $e");
     }
   }
 
@@ -76,5 +94,14 @@ class UserServices {
 
   Future<void> loadUserData() async {
     _userData = await fetchUserData();
+  }
+
+  Future<bool> checkIsAdmin(String uid) async {
+    try {
+      final doc = await _firestore.collection('admin_roles').doc(uid).get();
+      return doc.exists && doc.data()?['isAdmin'] == true;
+    } catch (e) {
+      return false;
+    }
   }
 }

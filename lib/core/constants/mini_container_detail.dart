@@ -1,5 +1,5 @@
 
-import 'package:sunnet_app/features/home/data/model/mini_container_model.dart';
+import 'package:sende_de_var/features/home/data/model/mini_container_model.dart';
 
 final List<MiniContainerDetail> miniContainerContent = [
   MiniContainerDetail(
@@ -11,7 +11,7 @@ final List<MiniContainerDetail> miniContainerContent = [
   MiniContainerDetail(
     iconPath: "assets/home/pusula.png",
     title: "Kıble Bulucu",
-    route: "/namaz"
+    route: "/kible"
   ),
   MiniContainerDetail(
     iconPath: "assets/home/soru.png",
