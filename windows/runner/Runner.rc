@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "sunnet_app" "\0"
+            VALUE "CompanyName", "com.bbclub" "\0"
+            VALUE "FileDescription", "Sende De Var" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "sunnet_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
+            VALUE "InternalName", "Sende De Var" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2025 com.bbclub. All rights reserved." "\0"
             VALUE "OriginalFilename", "sunnet_app.exe" "\0"
-            VALUE "ProductName", "sunnet_app" "\0"
+            VALUE "ProductName", "Sende De Var" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

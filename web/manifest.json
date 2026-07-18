@@ -1,11 +1,11 @@
 {
-    "name": "sunnet_app",
-    "short_name": "sunnet_app",
+    "name": "Sende De Var",
+    "short_name": "Sende De Var",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Sende De Var uygulaması.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

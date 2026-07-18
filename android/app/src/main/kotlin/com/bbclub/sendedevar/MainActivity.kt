@@ -1,4 +1,4 @@
-package com.example.sunnet_app
+package com.bbclub.sendedevar
 
 import io.flutter.embedding.android.FlutterActivity
 

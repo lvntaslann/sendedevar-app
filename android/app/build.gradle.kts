@@ -30,7 +30,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sunnet_app"
+    namespace = "com.bbclub.sendedevar"
     // compileSdk 35 şu anki en güncel stabil sürümdür
     compileSdk = 36
     ndkVersion = "27.0.12077973"
@@ -45,7 +45,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.sunnet_app"
+        applicationId = "com.bbclub.sendedevar"
         minSdk = flutter.minSdkVersion
         targetSdk = 35
         versionCode = flutter.versionCode
@@ -82,4 +82,8 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation("com.google.android.material:material:1.14.0")
 }
