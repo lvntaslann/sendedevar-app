@@ -11,21 +11,24 @@ class PrayerTimeService {
     required double lat,
     required double lng,
     required String date,
-    int days = 3,
-    int timezoneOffset = 180,
-    String calculationMethod = "Turkey",
-    String lang = "tr",
+    int method = 13, // Turkey
   }) async {
+    /// Eğer baseUrl = https://api.aladhan.com/v1
     final url =
-        "$baseUrl?lat=$lat&lng=$lng&date=$date&days=$days&timezoneOffset=$timezoneOffset&calculationMethod=$calculationMethod&lang=$lang";
+        "$baseUrl/timings/$date?latitude=$lat&longitude=$lng&method=$method";
+
+    print("API URL: $url");
 
     final response = await http.get(Uri.parse(url));
+
+    print("STATUS CODE: ${response.statusCode}");
+    print("BODY: ${response.body}");
 
     if (response.statusCode == 200) {
       final body = json.decode(response.body);
       return PrayerTimesResponse.fromJson(body);
     } else {
-      throw Exception("Failed to load prayer times");
+      throw Exception("API HATA: ${response.statusCode} - ${response.body}");
     }
   }
 }

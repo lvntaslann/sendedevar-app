@@ -54,17 +54,13 @@ Future<void> main() async {
             BlocProvider<KuranCubit>(
               create: (_) => KuranCubit(KuranServices()),
             ),
-            BlocProvider<UserCubit>(
-              create: (_) => UserCubit(UserServices()),
-            ),
+            BlocProvider<UserCubit>(create: (_) => UserCubit(UserServices())),
 
             BlocProvider<ChannelCubit>(
               create: (_) => ChannelCubit(ChannelServices()),
             ),
 
-            BlocProvider<DutyCubit>(
-              create: (_) => DutyCubit(DutyServices()),
-            ),
+            BlocProvider<DutyCubit>(create: (_) => DutyCubit(DutyServices())),
             BlocProvider<UserDutyCubit>(
               create: (_) => UserDutyCubit(UserDutyServices()),
             ),
